@@ -1,29 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Practica Dom</title>
-    <link rel="stylesheet" href="./css/reset.css">
-    <link rel="stylesheet" href="./css/style.css">
-    <script src="./script/main.js"></script>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practica Dom v2</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    
+  </head>
+  <body>
     <header id="header">
-        <img class="header-logo" src="./img/Tesla-Motors-logo.png" alt="" width="200px">
+      <img
+        class="header-logo"
+        src="./img/Tesla-Motors-logo.png"
+        alt=""
+        width="200px"
+      />
     </header>
 
     <section id="catalogo">
-        <h3 class="titulo">Catálogo</h3>
-        <div id="catalogo-contenido"></div>
+      <h3 class="titulo">Catálogo</h3>
+      <div id="catalogo-contenido">
+        <article id="articulo1" class="catalogo-articulo">
+          <img class="articulo-img" src="./img/model_S.jpg" alt="" />
+          <p class="articulo-titulo">Model S</p>
+          <p class="articulo-precio">Precio: 79.990 €</p>
+        </article>
+        <article id="articulo2" class="catalogo-articulo">
+          <img class="articulo-img" src="./img/model_3.jpg" />
+          <p class="articulo-titulo">Model 3</p>
+          <p class="articulo-precio">Precio: 49.000 €</p>
+        </article>
+        <article id="articulo3" class="catalogo-articulo">
+          <img class="articulo-img" src="./img/model_X.jpg" />
+          <p class="articulo-titulo">Model x</p>
+          <p class="articulo-precio">Precio: 88.990 €</p>
+        </article>
+        <article id="articulo4" class="catalogo-articulo">
+          <img class="articulo-img" src="./img/model_Y.jpg" />
+          <p class="articulo-titulo">Model Y</p>
+          <p class="articulo-precio">Precio: 64.000 €</p>
+        </article>
+      </div>
     </section>
 
     <section id="carrito">
-        <h3 class="titulo">Carrito</h3>
-        <p id="carrito-precioTotal">Precio Total Carrito: 0 €</p>
-        <p id="carrito-vaciar">Vaciar Carrito</p>
-        <div id="carrito-contenido"></div>
+      <h3 class="titulo">Carrito</h3>
+      <p id="carrito-precioTotal">Precio Total Carrito: 0 €</p>
+      <p id="carrito-vaciar">Vaciar Carrito</p>
+      <div id="carrito-contenido"></div>
     </section>
-    
-</body>
+    <script src="./script/main.js"></script>
+  </body>
 </html>
