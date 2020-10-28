@@ -43,11 +43,40 @@
         articulo.appendChild(precioTotalArticulo);
         articulo.appendChild(articuloBotones)
         let btnBorrar = creaBtnBorrar(articuloCatalogo);
+        let btnBorrarAll = creaBtnBorrarAll(articuloCatalogo);
         articuloBotones.appendChild(btnBorrar);
+        articuloBotones.appendChild(btnBorrarAll);
+
+        calculaTotal();
     }
 
 
-    
+    function calculaTotal() {
+        let articulos = cajaCarrito.getElementsByClassName("articulo-suma");
+        let precioTotalCarrito = 0;
+        Array.from(articulos).forEach(articulo => {
+            precioPorarticulo = parseInt(articulo.textContent.split(" ")[2].replace(/\./g, ""));
+            precioTotalCarrito += precioPorarticulo;
+        })
+        let precioFormat = new Intl.NumberFormat("es-ES").format(precioTotalCarrito);
+        document.getElementById("carrito-precioTotal").innerText = "Precio Total Carrito: " + precioFormat + " €";
+
+    }
+
+    function creaBtnBorrarAll(articuloCatalogo) {
+        articuloBtnBorrarAll = document.createElement("p");
+        articuloBtnBorrarAll.className = "boton-borrarAll";
+        articuloBtnBorrarAll.onclick = function borrarAll() {
+            let idCarrito = "carrito-" + articuloCatalogo.id;
+            let articulo = document.getElementById(idCarrito);
+            articulo.remove();
+            calculaTotal();
+        }
+        botonTexto = document.createTextNode("Borrar Todo");
+        articuloBtnBorrarAll.appendChild(botonTexto);
+        
+        return articuloBtnBorrarAll;
+    }
 
     function creaBtnBorrar(articuloCatalogo) {
         let articuloBtnBorrar = document.createElement("p");
@@ -59,6 +88,7 @@
                 unidades--;
                 document.getElementById(idCarrito).getElementsByTagName("p")[1].innerText = unidades;
                 let precio = articuloCatalogo.getElementsByClassName("articulo-precio");
+                // Cambiar por split por si cambia el precio
                 precio = precio[0].textContent.substring(7,14).replace(/\./g, "");
                 let precioFormat = new Intl.NumberFormat("es-ES").format(precio * unidades);
                 document.getElementById(idCarrito).getElementsByTagName("p")[2].innerText = "Precio Total: " + precioFormat + " €";
@@ -66,10 +96,11 @@
                 articuloBtnBorrar.parentNode.parentNode.remove();
             }
             precioTotal(articuloCatalogo);
+            calculaTotal();
         }
         botonTexto = document.createTextNode("Borrar");
         articuloBtnBorrar.appendChild(botonTexto);
-
+        
         return articuloBtnBorrar;
     }
 
@@ -145,6 +176,7 @@
         Array.from(articulos).forEach(articulo => {
             articulo.remove();
         });
+        calculaTotal();
     }
 
 
